@@ -13,23 +13,23 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-public class MUPanel extends JPanel implements KeyListener {
+public class MUPanel2 extends JPanel implements KeyListener {
 
     private Maze theMaze;
-    private NorthFirstMazeSolver northFirstSolver;
-    private Thread northFirstThread;
+    private RandomMazeSolver randomFirstSolver;
+    private Thread randomThread;
     private HumanMazeSolver player;
     
 
     
 
-    public MUPanel() {
+    public MUPanel2() {
         setLayout(null);
-        setPreferredSize(new Dimension(1000, 800));
-        setName("CSC 320 Lab # 3 -- Fun with North First Maze Solvers!");
+        setPreferredSize(new Dimension(400, 300));
+        setName("CSC 320 Lab # 3 -- Fun with Random Maze Solvers!");
         setBackground(Color.BLACK);
 
-        theMaze = new Maze(80, 100, 9, 1000);
+        theMaze = new Maze(13, 18, 20, 400);
         
         player = new HumanMazeSolver(theMaze, true);
         
@@ -50,10 +50,10 @@ public class MUPanel extends JPanel implements KeyListener {
         
         player.draw(g);
         
-        if (northFirstThread == null) {
-            northFirstSolver = new NorthFirstMazeSolver(theMaze, getGraphics());
-            northFirstThread = new Thread(northFirstSolver);
-            northFirstThread.start();
+        if (randomThread == null) {
+            randomFirstSolver = new RandomMazeSolver(theMaze, getGraphics());
+            randomThread = new Thread(randomFirstSolver);
+            randomThread.start();
         }
         
 
